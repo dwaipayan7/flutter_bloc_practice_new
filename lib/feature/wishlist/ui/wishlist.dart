@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/home_bloc.dart';
+import '../../home/bloc/home_bloc.dart';
 
-class Home extends StatefulWidget {
-  const Home({super.key});
+class Wishlist extends StatelessWidget {
+  const Wishlist({super.key});
 
-  @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,24 +21,28 @@ class _HomeState extends State<Home> {
         centerTitle: true,
         actions: [
           IconButton(
-              onPressed: (){
-                context.read<HomeBloc>()
-                    .add(HomeWishListButtonNavigateEvent());
-              },
+              onPressed: (){},
               icon: Icon(Icons.favorite_outline)
           ),
           IconButton(
-              onPressed: (){
-
-                context.read<HomeBloc>()
-                    .add(HomeCartButtonNavigationEvent());
-
-              },
+              onPressed: (){},
               icon: Icon(Icons.shopping_cart_outlined)
           ),
         ],
       ),
 
+      body: BlocConsumer<HomeBloc, HomeState>(
+
+        // listenWhen: (previous,current){},
+        // buildWhen: (previous, current){},
+
+        listener: (context, state) {
+          // TODO: implement listener
+        },
+        builder: (context, state) {
+          return Container();
+        },
+      ),
     );
   }
 }
